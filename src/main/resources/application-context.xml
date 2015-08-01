@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:component-scan base-package="tut.sprng"/>
+
+	<!--database config -->
+	<import resource="database-config.xml"></import>
+
+	<!--Beans init-->
+	<bean id="account" class="tut.sprng.beans.Account">
+		<property name="accountNumber" value="123"/>
+		<property name="accountHolder" value="Joe Test"/>
+	</bean>
+
+	<bean id="identification" class="tut.sprng.beans.Identification">
+		<constructor-arg type="long" value="201984"/>
+		<constructor-arg type="java.lang.String" value="ge9845hvdfge-j0r3"/>
+	</bean>
+
+	<bean id="transaction" class="tut.sprng.beans.Transaction" autowire="byType">
+		<property name="account" ref="account"/>
+	</bean>
+
+</beans>
+
