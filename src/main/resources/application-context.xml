@@ -25,7 +25,7 @@
 	</bean>
 
 	<bean id="identification" class="tut.sprng.beans.Identification">
-		<constructor-arg type="long" value="201984"/>
+		<constructor-arg type="long" value="#{ T(java.lang.Math).random() * 10000 }"/>
 		<constructor-arg type="java.lang.String" value="ge9845hvdfge-j0r3"/>
 	</bean>
 
