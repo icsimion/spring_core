@@ -44,7 +44,7 @@ public class GraduateJDBCTemplateIT {
 	@DirtiesContext
 	public void testInsertSuccess() throws Exception {
 
-		graduateJDBCTemplate.create(100, "Name", 22, 100, null);
+		graduateJDBCTemplate.create(100, "Success", 33, 99, null);
 
 		String SQL = "select * from graduate where id = ?";
 		Graduate graduate = jdbcTemplate.queryForObject(SQL,
@@ -52,9 +52,9 @@ public class GraduateJDBCTemplateIT {
 
 		assertThat(graduate, is(notNullValue()));
 
-		assertThat(graduate.getName(), is("Name"));
-		assertThat(graduate.getAge(), is(22));
-		assertThat(graduate.getScore(), is(100));
+		assertThat(graduate.getName(), is("Success"));
+		assertThat(graduate.getAge(), is(33));
+		assertThat(graduate.getScore(), is(99));
 		assertThat(graduate.getSpecialization(), is(CoreMatchers.nullValue()));
 	}
 
@@ -62,8 +62,8 @@ public class GraduateJDBCTemplateIT {
 	public void testInsertFailed() throws Exception {
 		exception.expect(DataIntegrityViolationException.class);
 
-		graduateJDBCTemplate.create(0, "Name", 22, 100, null);
-		graduateJDBCTemplate.create(0, "Name", 22, 100, null);
+		graduateJDBCTemplate.create(0, "OK", 11, 88, null);
+		graduateJDBCTemplate.create(0, "Fail", 22, 77, null);
 
 	}
 }

@@ -21,7 +21,6 @@ public class GraduateJDBCTemplate implements GraduateDAO {
 		Integer specId = specialization == null ? null : specialization.getId();
 		jdbcTemplate.update(SQL, id, name, age, score, specId);
 		System.out.println("Created Record Name = " + name + " Age = " + age);
-		return;
 	}
 
 	public Graduate getGraduate(int id) {

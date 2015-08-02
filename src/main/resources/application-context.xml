@@ -10,9 +10,18 @@
 	<import resource="database-config.xml"></import>
 
 	<!--Beans init-->
-	<bean id="account" class="tut.sprng.beans.Account">
-		<property name="accountNumber" value="123"/>
-		<property name="accountHolder" value="Joe Test"/>
+	<bean id="hero" class="tut.sprng.beans.Hero">
+		<property name="number" value="1"/>
+		<property name="name" value="Batman"/>
+	</bean>
+
+	<bean id="hero_sidekick" class="tut.sprng.beans.Hero">
+		<property name="number" value="1"/>
+		<property name="name" value="Batman"/>
+	</bean>
+
+
+	<bean id="heroService" class="tut.sprng.beans.HeroService" autowire="constructor">
 	</bean>
 
 	<bean id="identification" class="tut.sprng.beans.Identification">
@@ -20,8 +29,17 @@
 		<constructor-arg type="java.lang.String" value="ge9845hvdfge-j0r3"/>
 	</bean>
 
-	<bean id="transaction" class="tut.sprng.beans.Transaction" autowire="byType">
-		<property name="account" ref="account"/>
+	<bean id="quest" class="tut.sprng.beans.Quest" autowire="byType"
+			init-method="initIt" destroy-method="cleanUp">
+		<!--autowire Identification-->
+		<property name="statuses">
+				<map>
+					<entry key="31229353" value="ok"></entry>
+					<entry key="54645654" value="failed"></entry>
+					<entry key="78978565" value="pending"></entry>
+				</map>
+		</property>
+
 	</bean>
 
 </beans>

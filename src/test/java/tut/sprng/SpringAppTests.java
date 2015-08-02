@@ -1,21 +1,23 @@
 package tut.sprng;
 
-import junit.framework.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import tut.sprng.beans.Account;
+import tut.sprng.beans.Hero;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:application-context.xml")
 public class SpringAppTests {
 	@Autowired
-	private Account account;
+	private Hero hero;
 
 	@Test
-	public void testSayHello() {
-		Assert.assertEquals("Holder: Joe Test, number: 123", account.getInfo());
+	public void testHero() {
+		assertThat(hero.getName() + " " + hero.getNumber(), is("Batman 1"));
 	}
 }
