@@ -3,15 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<!--<context:component-scan base-package="*"/>-->
-	<!--<context:annotation-config/>-->
-
-
-
 	<import resource="classpath:/database-test-config.xml"/>
-	<!--<import resource="classpath:/application-context.xml"/>-->
-
-	<!--<context:component-scan base-package="tut.sprng" />-->
 
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 	<property name="driverClassName" value="${db.driver}"/>
