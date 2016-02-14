@@ -1,6 +1,6 @@
 package tut.sprng.beans;
 
-public class Hero {
+public class Pet {
 
 	private int number;
 	private String name;
@@ -19,5 +19,10 @@ public class Hero {
 	
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "Pet: Name = " + this.getName() + "; Number = " + this.getNumber();
 	}
 }

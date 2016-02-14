@@ -10,13 +10,13 @@ public class MainBeans {
 
 		System.out.println("-------");
 
-		Quest quest = (Quest) context.getBean("quest");
-		quest.viewDetails();
+		Activity activity = (Activity) context.getBean("activity");
+		activity.viewDetails();
 
 		System.out.println("-------");
 
-		HeroService heroService = (HeroService) context.getBean("heroService");
-		heroService.viewDetails();
+		PetService petService = (PetService) context.getBean("petService");
+		petService.viewDetails();
 
 		System.out.println("-------");
 

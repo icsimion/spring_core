@@ -2,15 +2,15 @@ package tut.sprng.jdbc;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import tut.sprng.jdbc.graduate.Graduate;
-import tut.sprng.jdbc.graduate.GraduateJDBCTemplate;
+import tut.sprng.jdbc.student.Student;
+import tut.sprng.jdbc.student.StudentJDBCTemplate;
 import tut.sprng.jdbc.specialization.Specialization;
 import tut.sprng.jdbc.specialization.SpecializationJDBCTemplate;
 
 import java.util.List;
 
 public class MainJdbc {
-	private static GraduateJDBCTemplate graduateJDBCTemplate;
+	private static StudentJDBCTemplate studentJDBCTemplate;
 	private static SpecializationJDBCTemplate specializationJDBCTemplate;
 
 	public static void main(String[] args) {
@@ -25,16 +25,16 @@ public class MainJdbc {
 		deleteSpecializations(new int[]{1});
 
 
-		// graduates
+		// students
 		createSpecializations();
 		List<Specialization> specializations = getSpecializations();
 
-		createGraduates(specializations);
-		getGraduates();
-		deleteGraduates(new int[]{11, 12, 13});
-		updateGraduates(14);
-		getGraduates(14);
-		deleteGraduates(new int[]{14});
+		createStudents(specializations);
+		getStudents();
+		deleteStudents(new int[]{11, 12, 13});
+		updateStudents(14);
+		getStudents(14);
+		deleteStudents(new int[]{14});
 
 		//clean up
 		deleteSpecializations(new int[]{1, 2, 3, 4, 5});
@@ -45,8 +45,8 @@ public class MainJdbc {
 	private static void init() {
 		ApplicationContext context =
 				new ClassPathXmlApplicationContext("application-context.xml");
-		graduateJDBCTemplate =
-				(GraduateJDBCTemplate) context.getBean("graduateJDBCTemplate");
+		studentJDBCTemplate =
+				(StudentJDBCTemplate) context.getBean("studentJDBCTemplate");
 		specializationJDBCTemplate =
 				(SpecializationJDBCTemplate) context.getBean("specializationJDBCTemplate");
 
@@ -89,40 +89,40 @@ public class MainJdbc {
 		return specializations;
 	}
 
-	private static void createGraduates(List<Specialization> specializations) {
+	private static void createStudents(List<Specialization> specializations) {
 		System.out.println("------Records Creation--------");
-		graduateJDBCTemplate.create(11, "Hulya", 25, 99, specializations.get((int) (specializations.size() * Math.random())));
-		graduateJDBCTemplate.create(12, "Ilie", 27, 89, specializations.get((int) (specializations.size() * Math.random())));
-		graduateJDBCTemplate.create(13, "Calin", 25, 76, specializations.get((int) (specializations.size() * Math.random())));
-		graduateJDBCTemplate.create(14, "Alina", 80, 100, specializations.get((int) (specializations.size() * Math.random())));
+		studentJDBCTemplate.create(11, "Hulya", 25, 99, specializations.get((int) (specializations.size() * Math.random())));
+		studentJDBCTemplate.create(12, "Ilie", 27, 89, specializations.get((int) (specializations.size() * Math.random())));
+		studentJDBCTemplate.create(13, "Calin", 25, 76, specializations.get((int) (specializations.size() * Math.random())));
+		studentJDBCTemplate.create(14, "Alina", 80, 100, specializations.get((int) (specializations.size() * Math.random())));
 	}
 
-	private static void deleteGraduates(int[] ids) {
-		System.out.println("------Graduates delete--------");
+	private static void deleteStudents(int[] ids) {
+		System.out.println("------Students delete--------");
 		for (int id : ids) {
-			graduateJDBCTemplate.delete(id);
+			studentJDBCTemplate.delete(id);
 		}
 	}
 
-	private static void updateGraduates(int id) {
-		System.out.println("------Graduates update--------");
-		graduateJDBCTemplate.update(id, 20 + id);
+	private static void updateStudents(int id) {
+		System.out.println("------Students update--------");
+		studentJDBCTemplate.update(id, 20 + id);
 	}
 
-	private static Graduate getGraduates(int id) {
-		System.out.println("------Graduates get by id--------");
-		Graduate graduate = graduateJDBCTemplate.getGraduate(id);
-		System.out.println(graduate.getId() + " " + graduate.getName());
-		return graduate;
+	private static Student getStudents(int id) {
+		System.out.println("------Students get by id--------");
+		Student student = studentJDBCTemplate.getStudent(id);
+		System.out.println(student.getId() + " " + student.getName());
+		return student;
 	}
 
-	private static List<Graduate> getGraduates() {
-		System.out.println("------Graduates getGraduates--------");
-		List<Graduate> graduates = graduateJDBCTemplate.listGraduates();
-		for (Graduate graduate : graduates) {
-			System.out.println(graduate.getId() + " " + graduate.getName());
+	private static List<Student> getStudents() {
+		System.out.println("------Students getStudents--------");
+		List<Student> students = studentJDBCTemplate.listStudents();
+		for (Student student : students) {
+			System.out.println(student.getId() + " " + student.getName());
 		}
-		return graduates;
+		return students;
 	}
 
 }

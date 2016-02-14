@@ -1,11 +1,11 @@
-package tut.sprng.jdbc.graduate;
+package tut.sprng.jdbc.student;
 
 import tut.sprng.jdbc.specialization.Specialization;
 
 import javax.sql.DataSource;
 import java.util.List;
 
-public interface GraduateDAO {
+public interface StudentDAO {
 	/**
 	 * This is the method to be used to initialize
 	 * database resources ie. connection.
@@ -14,33 +14,33 @@ public interface GraduateDAO {
 
 	/**
 	 * This is the method to be used to create
-	 * a record in the Graduate table.
+	 * a record in the Student table.
 	 */
 	public void create(int id, String name, int age, int score, Specialization specialization);
 
 	/**
 	 * This is the method to be used to list down
-	 * a record from the Graduate table corresponding
-	 * to a passed graduate id.
+	 * a record from the Student table corresponding
+	 * to a passed student id.
 	 */
-	public Graduate getGraduate(int id);
+	public Student getStudent(int id);
 
 	/**
 	 * This is the method to be used to list down
-	 * all the records from the Graduate table.
+	 * all the records from the Student table.
 	 */
-	public List<Graduate> listGraduates();
+	public List<Student> listStudents();
 
 	/**
 	 * This is the method to be used to delete
-	 * a record from the Graduate table corresponding
-	 * to a passed graduate id.
+	 * a record from the Student table corresponding
+	 * to a passed student id.
 	 */
 	public void delete(Integer id);
 
 	/**
 	 * This is the method to be used to update
-	 * a record into the Graduate table.
+	 * a record into the Student table.
 	 */
 	public void update(Integer id, Integer age);
 }

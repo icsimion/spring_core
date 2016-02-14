@@ -10,18 +10,15 @@
 	<import resource="database-config.xml"></import>
 
 	<!--Beans init-->
-	<bean id="hero" class="tut.sprng.beans.Hero">
+	<bean id="pet" class="tut.sprng.beans.Pet">
 		<property name="number" value="1"/>
-		<property name="name" value="Batman"/>
-	</bean>
-
-	<bean id="hero_sidekick" class="tut.sprng.beans.Hero">
-		<property name="number" value="1"/>
-		<property name="name" value="Batman"/>
+		<property name="name" value="Baiatu"/>
 	</bean>
 
 
-	<bean id="heroService" class="tut.sprng.beans.HeroService" autowire="constructor">
+	<bean id="pet_sidekick" class="tut.sprng.beans.Pet">
+		<property name="number" value="2"/>
+		<property name="name" value="Prostu"/>
 	</bean>
 
 	<bean id="identification" class="tut.sprng.beans.Identification">
@@ -29,14 +26,19 @@
 		<constructor-arg type="java.lang.String" value="ge9845hvdfge-j0r3"/>
 	</bean>
 
-	<bean id="quest" class="tut.sprng.beans.Quest" autowire="byType"
-			init-method="initIt" destroy-method="cleanUp">
-		<!--autowire Identification-->
-		<property name="statuses">
+	<!--autowiring Pet into PetService-->
+	<bean id="petService" class="tut.sprng.beans.PetService" autowire="constructor">
+	</bean>
+
+	<bean id="activity" class="tut.sprng.beans.Activity" init-method="initIt" destroy-method="cleanUp">
+		<!--@Autowire Identification into Activity-->
+
+		<property name="name" value="play"/>
+		<property name="games">
 				<map>
-					<entry key="31229353" value="ok"></entry>
-					<entry key="54645654" value="failed"></entry>
-					<entry key="78978565" value="pending"></entry>
+					<entry key="123" value="fetch"></entry>
+					<entry key="243" value="run"></entry>
+					<entry key="345" value="roll-over"></entry>
 				</map>
 		</property>
 

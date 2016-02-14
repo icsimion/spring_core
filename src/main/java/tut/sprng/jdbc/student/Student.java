@@ -1,8 +1,8 @@
-package tut.sprng.jdbc.graduate;
+package tut.sprng.jdbc.student;
 
 import tut.sprng.jdbc.specialization.Specialization;
 
-public class Graduate {
+public class Student {
 	private int id;
 	private String name;
 	private int age;

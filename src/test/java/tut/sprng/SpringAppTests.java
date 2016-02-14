@@ -5,7 +5,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import tut.sprng.beans.Hero;
+import tut.sprng.beans.Pet;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -14,10 +14,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
 @ContextConfiguration("classpath:application-context.xml")
 public class SpringAppTests {
 	@Autowired
-	private Hero hero;
+	private Pet pet;
 
 	@Test
-	public void testHero() {
-		assertThat(hero.getName() + " " + hero.getNumber(), is("Batman 1"));
+	public void testPet() {
+		assertThat(pet.getName() + " " + pet.getNumber(), is("Baiatu 1"));
 	}
 }

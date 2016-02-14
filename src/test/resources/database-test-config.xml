@@ -17,9 +17,9 @@
 		<property name="password" value="${db.password}"/>
 	</bean>
 
-	<!-- Definition for graduateJDBCTemplate bean -->
-	<bean id="graduateJDBCTemplate"
-	      class="tut.sprng.jdbc.graduate.GraduateJDBCTemplate">
+	<!-- Definition for studentJDBCTemplate bean -->
+	<bean id="studentJDBCTemplate"
+	      class="tut.sprng.jdbc.student.StudentJDBCTemplate">
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
 

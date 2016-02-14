@@ -29,4 +29,10 @@ public class Identification {
 	public long getId() {
 		return id;
 	}
+
+	@Override
+	public String toString() {
+		return "Identification: Id = " + this.getId() + "; Dignature = " + this.getSignature();
+	}
+
 }

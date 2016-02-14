@@ -18,8 +18,8 @@
 	</bean>
 
 	<!-- Definition for graduateJDBCTemplate bean -->
-	<bean id="graduateJDBCTemplate"
-	      class="tut.sprng.jdbc.graduate.GraduateJDBCTemplate">
+	<bean id="studentJDBCTemplate"
+	      class="tut.sprng.jdbc.student.StudentJDBCTemplate">
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
 

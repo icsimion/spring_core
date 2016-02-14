@@ -1,7 +1,8 @@
-package tut.sprng.jdbc.graduate;
+package tut.sprng.jdbc.student;
 
 
 import org.hamcrest.CoreMatchers;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -21,11 +22,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsNull.notNullValue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath*:**/GraduateJDBCTemplateIT-context.xml"})
-public class GraduateJDBCTemplateIT {
+@ContextConfiguration(locations = {"classpath*:**/StudentJDBCTemplateIT-context.xml"})
+public class StudentJDBCTemplateIT {
 
 	@Autowired
-	private GraduateJDBCTemplate graduateJDBCTemplate;
+	private StudentJDBCTemplate studentJDBCTemplate;
 
 	@Autowired
 	private DataSource dataSource;
@@ -44,26 +45,33 @@ public class GraduateJDBCTemplateIT {
 	@DirtiesContext
 	public void testInsertSuccess() throws Exception {
 
-		graduateJDBCTemplate.create(100, "Success", 33, 99, null);
+		studentJDBCTemplate.create(100, "Success", 33, 99, null);
 
-		String SQL = "select * from graduate where id = ?";
-		Graduate graduate = jdbcTemplate.queryForObject(SQL,
-				new Object[]{100}, new GraduateMapper());
+		String SQL = "select * from student where id = ?";
+		Student student = jdbcTemplate.queryForObject(SQL,
+				new Object[]{100}, new StudentMapper());
 
-		assertThat(graduate, is(notNullValue()));
+		assertThat(student, is(notNullValue()));
 
-		assertThat(graduate.getName(), is("Success"));
-		assertThat(graduate.getAge(), is(33));
-		assertThat(graduate.getScore(), is(99));
-		assertThat(graduate.getSpecialization(), is(CoreMatchers.nullValue()));
+		assertThat(student.getName(), is("Success"));
+		assertThat(student.getAge(), is(33));
+		assertThat(student.getScore(), is(99));
+		assertThat(student.getSpecialization(), is(CoreMatchers.nullValue()));
 	}
 
 	@Test
 	public void testInsertFailed() throws Exception {
 		exception.expect(DataIntegrityViolationException.class);
 
-		graduateJDBCTemplate.create(0, "OK", 11, 88, null);
-		graduateJDBCTemplate.create(0, "Fail", 22, 77, null);
+		studentJDBCTemplate.create(0, "OK", 11, 88, null);
+		studentJDBCTemplate.create(0, "Fail", 22, 77, null);
+
+	}
+
+	@After
+	public void cleanUp() {
+		studentJDBCTemplate.delete(100);
+		studentJDBCTemplate.delete(0);
 
 	}
 }
