@@ -19,6 +19,7 @@ public class Activity {
 	private Pet pet;
 
 	public void viewDetails() {
+		System.out.println("------------- Activity ----------");
 		System.out.println(identification);
 		System.out.println(pet);
 		System.out.println("Statuses:");
@@ -26,6 +27,8 @@ public class Activity {
 		for (Map.Entry<Long, String> entry : entries) {
 			System.out.println(" - >  timestamp: " + entry.getKey() + ", game: " + entry.getValue());
 		}
+		System.out.println("------------- /Activity ----------");
+
 	}
 
 	public void setGames(Map<Long, String> games) {

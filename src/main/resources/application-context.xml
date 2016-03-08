@@ -30,7 +30,7 @@
 	<bean id="petService" class="tut.sprng.beans.PetService" autowire="constructor">
 	</bean>
 
-	<bean id="activity" class="tut.sprng.beans.Activity" init-method="initIt" destroy-method="cleanUp">
+	<bean id="activity" class="tut.sprng.beans.Activity">  <!--init-method="initIt" destroy-method="cleanUp">-->
 		<!--@Autowire Identification into Activity-->
 
 		<property name="name" value="play"/>

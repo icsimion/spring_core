@@ -6,7 +6,7 @@ public class PetService {
 
 	// constructor is used for autowire by constructor
 	public PetService(Pet pet) {
-		System.out.println("PetService - Autowiring by constructor used");
+//		System.out.println("PetService - Autowiring by constructor used");
 		this.pet = pet;
 	}
 
